@@ -8,7 +8,7 @@ import (
 	"bytes"
 	"strings"
 
-	"github.com/goki/gotopy/pyprint"
+	"github.com/go-python/gotopy/pyprint"
 )
 
 // moveLines moves the st,ed region to 'to' line

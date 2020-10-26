@@ -15,7 +15,7 @@ import (
 	"go/ast"
 	"go/token"
 
-	"github.com/goki/gotopy/pyprint"
+	"github.com/go-python/gotopy/pyprint"
 )
 
 // format formats the given package file originally obtained from src

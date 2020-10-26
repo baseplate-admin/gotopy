@@ -26,8 +26,8 @@ import (
 	"runtime/pprof"
 	"strings"
 
-	"github.com/goki/gotopy/diff"
-	"github.com/goki/gotopy/pyprint"
+	"github.com/go-python/gotopy/diff"
+	"github.com/go-python/gotopy/pyprint"
 )
 
 var (

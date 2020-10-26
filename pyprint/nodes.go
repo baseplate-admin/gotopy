@@ -793,13 +793,13 @@ func isBinary(expr ast.Expr) bool {
 }
 
 func (p *printer) ident(id *ast.Ident) {
-	// if id.Name == "AlphaCycle" {
-	// 	fmt.Printf("%+V\n", id)
+	// todo: this was an attempt to deal with "enums" by printing type then
+	// name -- didn't work -- could return to this but not high priority
+	// if id.Obj != nil && id.Obj.Kind == ast.Con && id.Name != id.Obj.Name {
+	// 	// constants are assumed to be Enums -- use type scoping for python
+	// 	// fmt.Printf("id: %+v\n", id)
+	// 	p.print(id.Obj.Name, token.PERIOD)
 	// }
-	// todo: seems like Obj is typically nil.. not sure how to fix this..
-	if id.Obj != nil && id.Obj.Kind == ast.Con { // constants are assumed to be Enums -- use type scoping for python
-		p.print(id.Obj.Name, token.PERIOD)
-	}
 	p.print(id.Pos(), id)
 }
 

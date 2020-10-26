@@ -55,7 +55,7 @@ def guirun():
     win.StartEventLoop()
 
     # LogPrec is precision for saving float values in logs
-LogPrec.LogPrec = 4
+LogPrec = 4
 
 # ParamSets is the default set of parameters -- Base is always applied, and others can be optionally
 # selected to apply on top of that
@@ -849,7 +849,7 @@ class Sim(pygiv.ClassViewObj):
         dt.SetMetaData("name", "TrnEpcLog")
         dt.SetMetaData("desc", "Record of performance over epochs of training")
         dt.SetMetaData("read-only", "true")
-        dt.SetMetaData("precision", str(LogPrec.LogPrec))
+        dt.SetMetaData("precision", str(LogPrec))
 
         sch = etable.Schema(
             ("Run", etensor.INT64, go.nil, go.nil),
@@ -928,7 +928,7 @@ class Sim(pygiv.ClassViewObj):
         dt.SetMetaData("name", "TstTrlLog")
         dt.SetMetaData("desc", "Record of testing per input pattern")
         dt.SetMetaData("read-only", "true")
-        dt.SetMetaData("precision", str(LogPrec.LogPrec))
+        dt.SetMetaData("precision", str(LogPrec))
 
         nt = ss.TestEnv.Table.Len() # number in view
         sch = etable.Schema(
@@ -1012,7 +1012,7 @@ class Sim(pygiv.ClassViewObj):
         dt.SetMetaData("name", "TstEpcLog")
         dt.SetMetaData("desc", "Summary stats for testing trials")
         dt.SetMetaData("read-only", "true")
-        dt.SetMetaData("precision", str(LogPrec.LogPrec))
+        dt.SetMetaData("precision", str(LogPrec))
 
         dt.SetFromSchema(etable.Schema(
             ("Run", etensor.INT64, go.nil, go.nil),
@@ -1060,7 +1060,7 @@ class Sim(pygiv.ClassViewObj):
         dt.SetMetaData("name", "TstCycLog")
         dt.SetMetaData("desc", "Record of activity etc over one trial by cycle")
         dt.SetMetaData("read-only", "true")
-        dt.SetMetaData("precision", str(LogPrec.LogPrec))
+        dt.SetMetaData("precision", str(LogPrec))
 
         np = 100 # max cycles
         sch = etable.Schema(
@@ -1127,7 +1127,7 @@ class Sim(pygiv.ClassViewObj):
         dt.SetMetaData("name", "RunLog")
         dt.SetMetaData("desc", "Record of performance at end of training")
         dt.SetMetaData("read-only", "true")
-        dt.SetMetaData("precision", str(LogPrec.LogPrec))
+        dt.SetMetaData("precision", str(LogPrec))
 
         dt.SetFromSchema(etable.Schema(
             ("Run", etensor.INT64, go.nil, go.nil),
