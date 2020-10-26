@@ -146,7 +146,7 @@ func pyEditsReplace(lines [][]byte) {
 	floatp := []byte("float(")
 	stringp := []byte("string(")
 	strp := []byte("str(")
-	slicestr := []byte("[]string(")
+	slicestr := []byte("[]str(")
 	sliceint := []byte("[]int(")
 	slicefloat64 := []byte("[]float64(")
 	slicefloat32 := []byte("[]float32(")

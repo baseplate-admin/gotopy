@@ -279,7 +279,7 @@ class Sim(pygiv.ClassViewObj):
         ss.TrainUpdt = leabra.AlphaCycle
         ss.TestUpdt = leabra.Cycle
         ss.TestInterval = 5
-        ss.LayStatNms = []str("Hidden1", "Hidden2", "Output")
+        ss.LayStatNms = go.Slice_string(["Hidden1", "Hidden2", "Output"])
 
     def Config(ss):
         """
@@ -467,7 +467,7 @@ class Sim(pygiv.ClassViewObj):
         (training, testing, etc).
         """
 
-        lays = []str("Input", "Output")
+        lays = go.Slice_string(["Input", "Output"])
         for lnm in lays :
             ly = leabra.LeabraLayer(ss.Net.LayerByName(lnm)).AsLeabra()
             pats = en.State(ly.Nm)
@@ -699,7 +699,7 @@ class Sim(pygiv.ClassViewObj):
         """
         if sheet == "":
 
-            ss.Params.ValidateSheets([]str("Network", "Sim"))
+            ss.Params.ValidateSheets(go.Slice_string(["Network", "Sim"]))
         err = ss.SetParamsSet("Base", sheet, setMsg)
         if ss.ParamSet != "" and ss.ParamSet != "Base":
             sps = ss.ParamSet.split()
@@ -735,8 +735,8 @@ class Sim(pygiv.ClassViewObj):
         dt.SetMetaData("desc", "Training patterns")
         dt.SetFromSchema(etable.Schema(
             ("Name", etensor.STRING, go.nil, go.nil),
-            ("Input", etensor.FLOAT32, go.Slice_int([5, 5]), []str("Y", "X")),
-            ("Output", etensor.FLOAT32, go.Slice_int([5, 5]), []str("Y", "X")),
+            ("Input", etensor.FLOAT32, go.Slice_int([5, 5]]), go.Slice_string(["Y", "X")),
+            ("Output", etensor.FLOAT32, go.Slice_int([5, 5]]), go.Slice_string(["Y", "X")),
         ), 25)
 
         patgen.PermutedBinaryRows(dt.Cols[1], 6, 1, 0)
@@ -1111,7 +1111,7 @@ class Sim(pygiv.ClassViewObj):
         dt.SetCellFloat("CosDiff", row, agg.Mean(epcix, "CosDiff")[0])
 
         runix = etable.NewIdxView(dt)
-        spl = split.GroupBy(runix, []str("Params"))
+        spl = split.GroupBy(runix, go.Slice_string(["Params"]))
         split.Desc(spl, "FirstZero")
         split.Desc(spl, "PctCor")
         ss.RunStats = spl.AggsToTable(etable.AddAggName)
@@ -1311,7 +1311,7 @@ class Sim(pygiv.ClassViewObj):
         # main menu
         appnm = gi.AppName()
         mmen = win.MainMenu
-        mmen.ConfigMenus([]str(appnm, "File", "Edit", "Window"))
+        mmen.ConfigMenus(go.Slice_string([appnm, "File", "Edit", "Window"]))
 
         amen = *gi.Action(win.MainMenu.ChildByName(appnm, 0))
         amen.Menu.AddAppMenu(win)
