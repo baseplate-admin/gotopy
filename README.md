@@ -19,4 +19,9 @@ The `-gogi` flag generates [GoGi](https:://github.com/goki/gi) specific Python c
 
 * switch -> ifs.. -- grab switch expr and put into each if
 
+* string .contains -> "el" in str
+
+* map access with 2 vars = if el in map:  mv = map[el]
+
+* for range with 2 vars = enumerate(slice)
 

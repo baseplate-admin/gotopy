@@ -156,6 +156,10 @@ func pyEditsReplace(lines [][]byte) {
 	goslicefloat32 := []byte("go.Slice_float32([")
 	stringsdot := []byte("strings.")
 	copyp := []byte("copy(")
+	eqgonil := []byte(" == go.nil")
+	eqgonil0 := []byte(" == 0")
+	negonil := []byte(" != go.nil")
+	negonil0 := []byte(" != 0")
 
 	gopy := (printerMode&pyprint.GoPy != 0)
 	// gogi := (printerMode&pyprint.GoGi != 0)
@@ -165,6 +169,8 @@ func pyEditsReplace(lines [][]byte) {
 		ln = bytes.Replace(ln, float32p, floatp, -1)
 		ln = bytes.Replace(ln, stringp, strp, -1)
 		ln = bytes.Replace(ln, forblank, fornoblank, -1)
+		ln = bytes.Replace(ln, eqgonil, eqgonil0, -1)
+		ln = bytes.Replace(ln, negonil, negonil0, -1)
 
 		if bytes.Contains(ln, fmtSprintf) {
 			if bytes.Contains(ln, []byte("%")) {
